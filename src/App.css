@@ -11,10 +11,17 @@ nav a:hover {
     transition: all .15s ease-in;
 }
 
+
 .task:hover>button {
     display: block;
-
 }
+
+
+button:hover>.theme-icon {
+    animation: swing 1.5s backwards;
+}
+
+
 
 @media screen and (max-width : 767px) {
     nav {

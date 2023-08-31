@@ -22,12 +22,12 @@ const AddTaskForm = () => {
                 setInputText('');
                 addTaskHandler(inputText);
             }}
-            className='flex items-center gap-4 px-6 py-4 w-full bg-very-light-gray rounded-md mb-6'>
+            className='flex items-center gap-4 px-6 py-4 w-full bg-very-light-gray dark:bg-very-dark-desaturated-blue rounded-md mb-6 '>
             <div className='h-full p-[1px] '>
-                <div className='w-6 h-6 rounded-full border-[1px] border-very-light-grayish-blue'></div>
+                <div className='w-6 h-6 rounded-full border-[1px] border-very-light-grayish-blue dark:border-very-dark-grayish-blue-dark-1'></div>
             </div>
             <input
-                className='w-full h-full py-2 px-2 bg-very-light-gray focus:outline-none text-xl text-very-dark-desaturated-blue'
+                className='w-full h-full py-2 px-2 bg-transparent focus:outline-none text-xl text-very-dark-desaturated-blue dark:text-very-light-grayish-blue'
                 type="text"
                 placeholder='Create new todo...'
                 ref={inputRef}
@@ -37,7 +37,10 @@ const AddTaskForm = () => {
                 }}
             />
             <button type="submit">
-                <MdOutlineAddTask className='text-light-grayish-blue-light text-2xl hover:text-dark-grayish-blue-light transition duration-200' />
+                <MdOutlineAddTask className='
+                    text-light-grayish-blue-light text-2xl hover:text-dark-grayish-blue-light 
+                    dark:text-dark-grayish-blue-dark dark:hover:text-light-grayish-blue-dark-hover
+                    transition duration-200' />
             </button>
         </form>
     )

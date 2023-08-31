@@ -14,6 +14,11 @@ const TasksProvider = ({ children }) => {
     const [active, setActive] = useState(initialTasks.filter(task => !task.isCompleted));
     const [completed, setCompleted] = useState(initialTasks.filter(task => task.isCompleted));
     const [nextId, setNextId] = useState(5);
+    const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+
+    const toggleDarkMode = () => {
+        setDarkModeEnabled(prevstate => !prevstate);
+    }
 
     useEffect(
         () => {
@@ -29,10 +34,12 @@ const TasksProvider = ({ children }) => {
                 active,
                 completed,
                 nextId,
+                darkModeEnabled,
                 dispatch,
                 setActive,
                 setCompleted,
-                setNextId
+                setNextId,
+                toggleDarkMode
             }}
         >
             {children}
