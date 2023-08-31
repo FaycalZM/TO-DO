@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const NavBar = () => {
     return (
-        <nav className='flex gap-4'>
+        <nav className='tablet:flex hidden gap-4 '>
             <NavLink
                 to='/'
                 exact='true'

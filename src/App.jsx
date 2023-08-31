@@ -7,7 +7,7 @@ function App() {
 
 
   return (
-    <div className='main-page max-w-[100vw] min-w-[100vw] h-fit font-Josefin-sans bg-very-light-gray'>
+    <div className='main-page max-w-[100vw] min-w-[100vw] h-fit font-Josefin-sans'>
       <HeroSection />
       <MainContainer />
     </div>
