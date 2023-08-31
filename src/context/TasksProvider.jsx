@@ -13,7 +13,7 @@ const TasksProvider = ({ children }) => {
     const [allTasks, dispatch] = useReducer(TasksReducer, initialTasks);
     const [active, setActive] = useState(initialTasks.filter(task => !task.isCompleted));
     const [completed, setCompleted] = useState(initialTasks.filter(task => task.isCompleted));
-    const [nextId, setNextId] = useState(5);
+    const [nextId, setNextId] = useState(4);
     const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
     const toggleDarkMode = () => {
@@ -62,18 +62,14 @@ const initialTasks = [
     },
     {
         id: 2,
-        text: 'sleep',
-        isCompleted: false
-    },
-    {
-        id: 3,
         text: 'workout',
         isCompleted: false
     },
     {
-        id: 4,
-        text: 'have fun',
+        id: 3,
+        text: 'sleep',
         isCompleted: false
     },
+
 ]
 
