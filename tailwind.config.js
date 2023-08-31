@@ -24,7 +24,7 @@ export default {
       'very-dark-grayish-blue-dark-2': 'hsl(237, 14%, 26%)'
     },
     fontFamily: {
-      'josefin-sans': ['Josefin Sans', 'sans-serif'],
+      'Josefin-sans': ['Josefin Sans', 'sans-serif'],
     },
     screens: {
       'desktop': '1280px',

@@ -5,6 +5,8 @@
 @tailwind utilities;
 
 
+:root {}
+
 * {
     padding: 0;
     margin: 0;
@@ -15,7 +17,9 @@ html {
     list-style: none;
     outline: none;
     scroll-behavior: smooth;
+    font-family: 'Joesfin sans', sans-serif;
 }
+
 
 ::-webkit-scrollbar {
     display: none;

@@ -1,0 +1,17 @@
+.tasks-list {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+nav a.active {
+    color: hsl(220, 98%, 61%);
+}
+
+nav a:hover {
+    color: hsl(235, 19%, 35%);
+    transition: all .15s ease-in;
+}
+
+.task:hover>button {
+    display: block;
+
+}
