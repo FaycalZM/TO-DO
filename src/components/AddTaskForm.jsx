@@ -4,23 +4,15 @@ import { MdOutlineAddTask } from 'react-icons/md'
 
 const AddTaskForm = () => {
     const inputRef = useRef();
-    const { allTasks, active, setAllTasks, setActive, nextId, setNextId } = useTasksContext();
+    const { dispatch, nextId, setNextId } = useTasksContext();
     const [inputText, setInputText] = useState('');
 
     const addTaskHandler = (taskText) => {
-        let task = {
+        dispatch({
+            type: 'added',
             id: nextId,
-            text: taskText,
-            isCompleted: false
-        };
-        setAllTasks([
-            ...allTasks,
-            task
-        ]);
-        setActive([
-            ...active,
-            task
-        ]);
+            text: taskText
+        });
         setNextId(nextId => nextId + 1);
     }
     return (
@@ -45,7 +37,7 @@ const AddTaskForm = () => {
                 }}
             />
             <button type="submit">
-                <MdOutlineAddTask className='text-dark-grayish-blue-light text-2xl hover:text-very-dark-grayish-blue-light transition duration-200' />
+                <MdOutlineAddTask className='text-light-grayish-blue-light text-2xl hover:text-dark-grayish-blue-light transition duration-200' />
             </button>
         </form>
     )

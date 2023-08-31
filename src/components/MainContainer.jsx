@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import AllTasks from './AllTasks'
 import Active from './Active'
 import Completed from './Completed'
@@ -7,11 +7,11 @@ import { useTasksContext } from '../context/TasksProvider'
 import AddTaskForm from './AddTaskForm'
 import Header from './Header'
 import NavBar from './NavBar'
-import { DndContext } from '@dnd-kit/core'
+
 
 const MainContainer = () => {
 
-    const { active, allTasks, setAllTasks } = useTasksContext();
+    const { active, dispatch } = useTasksContext();
 
     return (
         <div className='min-h-[70vh] w-[35%] absolute top-[10%] left-1/2 -translate-x-1/2'>
@@ -34,9 +34,9 @@ const MainContainer = () => {
                     <button
                         className='text-dark-grayish-blue-light hover:text-very-dark-grayish-blue-light transition'
                         onClick={() => {
-                            setAllTasks(
-                                allTasks.filter(task => !task.isCompleted)
-                            );
+                            dispatch({
+                                type: 'cleared_completed'
+                            });
                         }}
                     >clear completed</button>
                 </div>

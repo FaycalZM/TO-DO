@@ -1,5 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
-import React, { useContext, createContext, useState, useEffect } from 'react'
+import React, { useContext, createContext, useState, useEffect, useReducer } from 'react';
+import TasksReducer from '../TasksReducer';
+
 
 const TasksContext = createContext();
 
@@ -8,7 +10,7 @@ export const useTasksContext = () => useContext(TasksContext);
 
 const TasksProvider = ({ children }) => {
 
-    const [allTasks, setAllTasks] = useState(initialTasks);
+    const [allTasks, dispatch] = useReducer(TasksReducer, initialTasks);
     const [active, setActive] = useState(initialTasks.filter(task => !task.isCompleted));
     const [completed, setCompleted] = useState(initialTasks.filter(task => task.isCompleted));
     const [nextId, setNextId] = useState(5);
@@ -26,9 +28,11 @@ const TasksProvider = ({ children }) => {
                 allTasks,
                 active,
                 completed,
-                setAllTasks,
+                nextId,
+                dispatch,
                 setActive,
-                setCompleted
+                setCompleted,
+                setNextId
             }}
         >
             {children}

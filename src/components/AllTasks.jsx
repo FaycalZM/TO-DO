@@ -7,6 +7,8 @@ const AllTasks = () => {
 
   const { allTasks, setAllTasks } = useTasksContext();
 
+  // 'reordering tasks' functionality using HTML drag&drop API
+
   const [draggedItemIndex, setDraggedItemIndex] = useState();
   const [draggedOverItemIndex, setDraggedOverItemIndex] = useState();
 

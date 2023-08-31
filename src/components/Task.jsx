@@ -14,25 +14,20 @@ const Task = ({
 }) => {
 
 
-    const { allTasks, setAllTasks } = useTasksContext();
+    const { dispatch } = useTasksContext();
 
     const updateTaskHandler = () => {
-        setAllTasks(
-            allTasks.map(task => {
-                if (id === task.id) {
-                    return { ...task, isCompleted: !isCompleted };
-                }
-                else {
-                    return task;
-                }
-            })
-        );
+        dispatch({
+            type: 'updated',
+            id: id
+        });
     }
 
     const deleteTaskHandler = () => {
-        setAllTasks(
-            allTasks.filter(task => task.id !== id)
-        )
+        dispatch({
+            type: 'deleted',
+            id: id
+        })
     }
     return (
         <div
