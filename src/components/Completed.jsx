@@ -14,7 +14,9 @@ const Completed = () => {
               key={index}
               text={task.text}
               isCompleted={task.isCompleted}
-              id={task.id} />
+              id={task.id}
+              index={index}
+            />
           })
           : <NoItemsFound />
       }

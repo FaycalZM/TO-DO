@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdOutlineClose } from 'react-icons/md'
 import { useTasksContext } from '../context/TasksProvider'
 
-const Task = ({ text, isCompleted, id }) => {
+const Task = ({
+    text,
+    isCompleted,
+    id,
+    index,
+    handleDragStart,
+    handleDrop,
+    handleDragEnter,
+    handleDragEnd
+}) => {
+
 
     const { allTasks, setAllTasks } = useTasksContext();
 
@@ -25,7 +35,22 @@ const Task = ({ text, isCompleted, id }) => {
         )
     }
     return (
-        <div className='task flex items-start justify-between px-6 py-4 w-full border-b-[1px] border-b-very-light-grayish-blue bg-very-light-gray'>
+        <div
+            draggable
+            onDragStart={() => {
+                handleDragStart(index);
+            }}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={() => {
+                handleDrop(index);
+            }}
+            onDragEnter={() => {
+                handleDragEnter(index);
+            }}
+            onDragEnd={handleDragEnd}
+
+
+            className='task flex items-start justify-between px-6 py-4 w-full border-b-[1px] border-b-very-light-grayish-blue bg-very-light-gray'>
             <div className='flex items-center gap-4 p-[1px]'>
                 <button
                     onClick={updateTaskHandler}
@@ -42,7 +67,9 @@ const Task = ({ text, isCompleted, id }) => {
 
                     </div>
                 </button>
-                <p className={`py-1 px-2 text-very-dark-grayish-blue-light capitalize text-lg ${isCompleted ? 'line-through' : null} `}> {text} </p>
+                <p
+                    onClick={updateTaskHandler}
+                    className={`py-1 px-2 text-very-dark-grayish-blue-light capitalize text-lg ${isCompleted ? 'line-through' : null} cursor-pointer `}> {text} </p>
             </div>
             <button
                 onClick={deleteTaskHandler}

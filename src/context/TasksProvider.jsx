@@ -11,7 +11,7 @@ const TasksProvider = ({ children }) => {
     const [allTasks, setAllTasks] = useState(initialTasks);
     const [active, setActive] = useState(initialTasks.filter(task => !task.isCompleted));
     const [completed, setCompleted] = useState(initialTasks.filter(task => task.isCompleted));
-    const [nextId, setNextId] = useState(3);
+    const [nextId, setNextId] = useState(5);
 
     useEffect(
         () => {
@@ -52,6 +52,16 @@ const initialTasks = [
     {
         id: 2,
         text: 'sleep',
+        isCompleted: false
+    },
+    {
+        id: 3,
+        text: 'workout',
+        isCompleted: false
+    },
+    {
+        id: 4,
+        text: 'have fun',
         isCompleted: false
     },
 ]

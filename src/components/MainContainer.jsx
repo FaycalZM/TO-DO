@@ -7,6 +7,7 @@ import { useTasksContext } from '../context/TasksProvider'
 import AddTaskForm from './AddTaskForm'
 import Header from './Header'
 import NavBar from './NavBar'
+import { DndContext } from '@dnd-kit/core'
 
 const MainContainer = () => {
 
@@ -19,12 +20,14 @@ const MainContainer = () => {
             <AddTaskForm />
 
             <div className='tasks-list py-1 bg-very-light-gray rounded-md'>
+
                 <Routes>
                     <Route path='/' element={<AllTasks />} />
                     <Route path='/active' element={<Active />} />
                     <Route path='/completed' element={<Completed />} />
                     <Route path='*' />
                 </Routes>
+
                 <div className='flex px-6 py-4 w-full justify-between text-[.9rem] capitalize'>
                     <p className='text-dark-grayish-blue-light'>{active.length} itmes left</p>
                     <NavBar />
