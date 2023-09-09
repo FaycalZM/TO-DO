@@ -1,19 +1,23 @@
 import React, { useState, useRef } from 'react'
-import { useTasksContext } from '../context/TasksProvider';
 import { MdOutlineAddTask } from 'react-icons/md'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateNextId, addTask, filterTasks } from '../features/todos/todosSlice'
+
 
 const AddTaskForm = () => {
+    const dispatch = useDispatch();
+    const { nextId } = useSelector(state => state.todos.nextId);
     const inputRef = useRef();
-    const { dispatch, nextId, setNextId } = useTasksContext();
+
     const [inputText, setInputText] = useState('');
 
     const addTaskHandler = (taskText) => {
-        dispatch({
-            type: 'added',
+        dispatch(addTask({
             id: nextId,
             text: taskText
-        });
-        setNextId(nextId => nextId + 1);
+        }));
+        dispatch(updateNextId());
+        dispatch(filterTasks());
     }
     return (
         <form

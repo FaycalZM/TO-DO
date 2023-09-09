@@ -1,10 +1,12 @@
 import React from 'react';
 import Task from './Task';
 import { useTasksContext } from '../context/TasksProvider';
+import { useSelector } from 'react-redux';
 import NoItemsFound from '../components/NoItemsFound'
 
 const Completed = () => {
-  const { completed, setCompleted } = useTasksContext();
+
+  const completed = useSelector(state => state.todos.completed);
   return (
     <>
       {

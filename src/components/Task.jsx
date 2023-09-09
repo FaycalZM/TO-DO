@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { MdOutlineClose } from 'react-icons/md'
 import { useTasksContext } from '../context/TasksProvider'
+import { useDispatch } from 'react-redux'
+import { updateTask, deleteTask, filterTasks } from '../features/todos/todosSlice'
 
 const Task = ({
   text,
@@ -13,21 +15,19 @@ const Task = ({
   handleDragEnd
 }) => {
 
-
-  const { dispatch, darkModeEnabled } = useTasksContext();
+  const dispatch = useDispatch();
+  // const { dispatch, darkModeEnabled } = useTasksContext();
 
   const updateTaskHandler = () => {
-    dispatch({
-      type: 'updated',
-      id: id
-    });
+    dispatch(updateTask({
+      id: id,
+    }))
   }
 
   const deleteTaskHandler = () => {
-    dispatch({
-      type: 'deleted',
-      id: id
-    })
+    dispatch(deleteTask({
+      id: id,
+    }))
   }
   return (
     <div
@@ -52,7 +52,10 @@ const Task = ({
       '>
       <div className='flex items-center gap-4 p-[1px]'>
         <button
-          onClick={updateTaskHandler}
+          onClick={() => {
+            updateTaskHandler();
+            dispatch(filterTasks());
+          }}
           className={`check-box w-6 h-6 ${isCompleted ? 'p-0' : 'p-[1px]'} flex items-center justify-center rounded-full border-[1px]
                border-very-light-grayish-blue dark:border-very-dark-grayish-blue-dark-1 bg-very-light-gray dark:bg-very-dark-grayish-blue-dark-2
                 hover:border-none hover:bg-gradient-to-br hover:from-check-background-from hover:to-check-background-to`}>
@@ -70,11 +73,17 @@ const Task = ({
           </div>
         </button>
         <p
-          onClick={updateTaskHandler}
+          onClick={() => {
+            updateTaskHandler();
+            dispatch(filterTasks());
+          }}
           className={`py-1 px-2 text-very-dark-grayish-blue-light dark:text-light-grayish-blue-dark capitalize text-lg ${isCompleted ? 'line-through' : null} cursor-pointer `}> {text} </p>
       </div>
       <button
-        onClick={deleteTaskHandler}
+        onClick={() => {
+          deleteTaskHandler();
+          dispatch(filterTasks());
+        }}
         className='text-3xl text-dark-grayish-blue-light hidden hover:text-very-dark-grayish-blue-light dark:text-dark-grayish-blue-dark dark:hover:text-light-grayish-blue-dark-hover transition'
       >
         <MdOutlineClose />

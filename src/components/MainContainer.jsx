@@ -6,12 +6,15 @@ import Completed from './Completed'
 import { useTasksContext } from '../context/TasksProvider'
 import AddTaskForm from './AddTaskForm'
 import Header from './Header'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCompleted, filterTasks } from '../features/todos/todosSlice'
 
 
 const MainContainer = () => {
 
-  const { active, dispatch } = useTasksContext();
+  // const { active, dispatch } = useTasksContext();
+  const active = useSelector(state => state.todos.active);
+  const dispatch = useDispatch();
 
   return (
     <div className='min-h-[70vh] desktop:w-[35%] tablet:w-[60%] w-[85%] absolute top-[10%] left-1/2 -translate-x-1/2'>
@@ -56,9 +59,9 @@ const MainContainer = () => {
             className='text-dark-grayish-blue-light hover:text-very-dark-grayish-blue-light
                dark:text-dark-grayish-blue-dark dark:hover:text-very-light-grayish-blue capitalize  transition'
             onClick={() => {
-              dispatch({
-                type: 'cleared_completed'
-              });
+              dispatch(clearCompleted());
+              dispatch(filterTasks());
+
             }}
           >clear completed</button>
         </div>
