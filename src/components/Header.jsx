@@ -1,12 +1,17 @@
 import React from 'react'
-import { useTasksContext } from '../context/TasksProvider'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleDarkMode } from '../features/darkMode/darkModeSlice'
 
 const Header = () => {
-    const { toggleDarkMode, darkModeEnabled } = useTasksContext();
+
+    const { darkModeEnabled } = useSelector(state => state.darkMode);
+    const dispatch = useDispatch();
     return (
         <div className='flex justify-between items-center py-2 mb-6'>
             <h1 className='text-5xl uppercase text-very-light-gray font-[700] tracking-[.9rem] '>todo</h1>
-            <button onClick={toggleDarkMode}>
+            <button onClick={() => {
+                dispatch(toggleDarkMode());
+            }}>
                 {
                     darkModeEnabled
                         ? <svg className='theme-icon fill-very-light-gray hover:fill-yellow-300 transition duration-300' xmlns="http://www.w3.org/2000/svg" width="35" height="35">

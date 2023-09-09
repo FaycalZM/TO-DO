@@ -3,7 +3,6 @@ import { Routes, Route, NavLink } from 'react-router-dom'
 import AllTasks from './AllTasks'
 import Active from './Active'
 import Completed from './Completed'
-import { useTasksContext } from '../context/TasksProvider'
 import AddTaskForm from './AddTaskForm'
 import Header from './Header'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,7 +11,6 @@ import { clearCompleted, filterTasks } from '../features/todos/todosSlice'
 
 const MainContainer = () => {
 
-  // const { active, dispatch } = useTasksContext();
   const active = useSelector(state => state.todos.active);
   const dispatch = useDispatch();
 

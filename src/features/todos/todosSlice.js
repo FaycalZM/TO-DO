@@ -62,11 +62,14 @@ export const todosSlice = createSlice({
         },
         updateNextId: (state) => {
             state.nextId++;
+        },
+        updateAllTasks: (state, action) => {
+            state.allTasks = action.payload.allTasks;
         }
     }
 })
 
-export const { addTask, updateTask, deleteTask, filterTasks } = todosSlice.actions;
+export const { addTask, updateTask, deleteTask, filterTasks, updateNextId, updateAllTasks, clearCompleted } = todosSlice.actions;
 
 
 export default todosSlice.reducer;

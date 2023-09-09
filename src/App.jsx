@@ -2,11 +2,12 @@ import './App.css'
 import HeroSection from './components/HeroSection'
 import MainContainer from './components/MainContainer'
 import 'animate.css'
-import { useTasksContext } from './context/TasksProvider'
+import { useSelector } from 'react-redux'
 
 function App() {
 
-  const { darkModeEnabled } = useTasksContext();
+
+  const { darkModeEnabled } = useSelector(state => state.darkMode);
   if (darkModeEnabled) {
     document.body.style.backgroundColor = 'hsl(235, 21%, 11%)';
   }

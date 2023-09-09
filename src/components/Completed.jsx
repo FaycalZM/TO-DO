@@ -1,6 +1,5 @@
 import React from 'react';
 import Task from './Task';
-import { useTasksContext } from '../context/TasksProvider';
 import { useSelector } from 'react-redux';
 import NoItemsFound from '../components/NoItemsFound'
 

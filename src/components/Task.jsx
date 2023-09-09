@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { MdOutlineClose } from 'react-icons/md'
-import { useTasksContext } from '../context/TasksProvider'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateTask, deleteTask, filterTasks } from '../features/todos/todosSlice'
 
 const Task = ({
@@ -16,7 +15,8 @@ const Task = ({
 }) => {
 
   const dispatch = useDispatch();
-  // const { dispatch, darkModeEnabled } = useTasksContext();
+  const { darkModeEnabled } = useSelector(state => state.darkMode);
+
 
   const updateTaskHandler = () => {
     dispatch(updateTask({

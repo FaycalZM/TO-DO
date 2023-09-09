@@ -1,11 +1,9 @@
 import React from 'react'
 import Task from './Task'
-import { useTasksContext } from '../context/TasksProvider';
 import NoItemsFound from '../components/NoItemsFound'
 import { useSelector } from 'react-redux';
 
 const Active = () => {
-  // const { active, setActive } = useTasksContext();
   const active = useSelector(state => state.todos.active);
   return (
     <>

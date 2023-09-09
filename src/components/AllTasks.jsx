@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import Task from './Task'
-import { useTasksContext } from '../context/TasksProvider'
 import NoItemsFound from '../components/NoItemsFound'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateAllTasks } from '../features/todos/todosSlice'
 
 const AllTasks = () => {
 
-  // const { allTasks, setAllTasks } = useTasksContext();
-
+  const dispatch = useDispatch();
   const allTasks = useSelector(state => state.todos.allTasks);
 
   // 'reordering tasks' functionality using HTML drag&drop API
@@ -20,12 +19,10 @@ const AllTasks = () => {
   }
 
   const handleDrop = () => {
-    let draggedItem = allTasks.splice(draggedItemIndex, 1)[0];
-    console.log(allTasks);
-    console.log(draggedItem);
-    allTasks.splice(draggedOverItemIndex, 0, draggedItem);
-    console.log(allTasks);
-    // setAllTasks(allTasks);
+    let _allTasks = [...allTasks];
+    let draggedItem = _allTasks.splice(draggedItemIndex, 1)[0];
+    _allTasks.splice(draggedOverItemIndex, 0, draggedItem);
+    dispatch(updateAllTasks({ allTasks: _allTasks }));
   }
 
   const handleDragEnter = (index) => {
